@@ -10,8 +10,8 @@
 
 - $0\ {\wedge}\ N = N$
 - $N\ {\wedge}\ N = 0$
-- 满足交换律：$a\ {\wedge}\ b = b\ {\wedge}\ a$
-- 满足结合律：$a\ {\wedge}\ (b\ {\wedge}\ c)= (a\ {\wedge}\ b)\ {\wedge}\ c $
+- 满足交换律： $a\ {\wedge}\ b = b\ {\wedge}\ a$ 
+- 满足结合律： $a\ {\wedge}\ (b\ {\wedge}\ c)= (a\ {\wedge}\ b)\ {\wedge}\ c $ 
 
 ## 异或的作用
 
