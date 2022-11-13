@@ -18,6 +18,7 @@ import java.util.Arrays;
  * @version
  */
 public class SelectionSort {
+
     /**
      * @title selectionSort
      * @author SongJian
@@ -39,22 +40,30 @@ public class SelectionSort {
                 minIndex = arr[j] < arr[minIndex] ? j : minIndex;
             }
             // 交换
-            swap(arr, i, minIndex);
+            SortUtils.swap(arr, i, minIndex);
         }
-        System.out.println("排序后：" + Arrays.toString(arr));
     }
 
-    private static void swap(int [] arr, int i, int j){
-        int tmp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = tmp;
-    }
-
-    // for test
     public static void main(String[] args) {
-        int[] arr = {1, 10, 5, 2, 6, 3, 2};
-        System.out.println("排序前："+Arrays.toString(arr));
+        int testTime = 500000;
+        int maxSize = 100;
+        int maxValue = 100;
+        boolean success = true;
+        for (int i = 0; i < testTime; i++) {
+            int[] arr1 = SortUtils.generateRandomArray(maxSize, maxValue);
+            int[] arr2 = SortUtils.copyArray(arr1);
+            selectionSort(arr1);
+            SortUtils.comparator(arr2);
+            if(!SortUtils.isEqual(arr1, arr2)){
+                success = false;
+                break;
+            }
+        }
+        System.out.println(success ? "Nice!" : "Fucking fucked!");
+        int[] arr = SortUtils.generateRandomArray(maxSize, maxValue);
+        SortUtils.printArray(arr);
         selectionSort(arr);
+        SortUtils.printArray(arr);
     }
 }
  
