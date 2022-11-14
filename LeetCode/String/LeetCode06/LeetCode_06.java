@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * LeetCode_06
- * @description Z 字形变换，https://leetcode.cn/problems/zigzag-conversion/description/
+ * @description 6. Z 字形变换，https://leetcode.cn/problems/zigzag-conversion/description/
  *              优秀题解：https://leetcode.cn/problems/zigzag-conversion/solutions/9490/6-z-zi-xing-bian-huan-c-c-by-bian-bian-xiong/
  * @author SongJian
  * @date 2022/11/14 08:51
