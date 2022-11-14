@@ -6,13 +6,13 @@
 package Integer.LeetCode07;
 
 /**
- * Solution
+ * LeetCode07
  * @description 7. 整数反转  https://leetcode.cn/problems/reverse-integer/description/
  * @author SongJian
  * @date 2022/11/14 10:18
  * @version
  */
-public class Solution {
+public class LeetCode07 {
     public int reverse(int x) {
         if (x == 0) return 0;
         int res = 0;
