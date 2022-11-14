@@ -3,7 +3,7 @@
  * @package sort
  * @className sort.SortUtils
  */
-package sort;
+package algorithms.sort;
 
 import javax.sound.midi.Soundbank;
 import java.util.Arrays;

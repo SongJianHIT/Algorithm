@@ -3,7 +3,7 @@
  * @package linked_list
  * @className linked_list.SingleLinkedList
  */
-package linked_list;
+package data_structures.linked_list;
 
 /**
  * SingleLinkedList

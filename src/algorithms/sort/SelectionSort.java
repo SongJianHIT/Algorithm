@@ -3,7 +3,7 @@
  * @package sort
  * @className sort.SelectionSort
  */
-package sort;
+package algorithms.sort;
 
 /**
  * SelectionSort

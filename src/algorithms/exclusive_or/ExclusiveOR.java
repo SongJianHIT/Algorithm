@@ -3,7 +3,7 @@
  * @package exclusive_or
  * @className exclusive_or.exclusiveOR
  */
-package exclusive_or;
+package algorithms.exclusive_or;
 
 /**
  * exclusiveOR

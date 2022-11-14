@@ -3,9 +3,7 @@
  * @package sort
  * @className sort.InsertSort
  */
-package sort;
-
-import java.util.Arrays;
+package algorithms.sort;
 
 /**
  * InsertSort
