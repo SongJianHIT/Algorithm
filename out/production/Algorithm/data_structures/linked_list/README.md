@@ -52,8 +52,8 @@ public static class DoubleListNode {
 
 **复杂度分析**
 
-- 时间复杂度： $O(n)$ ，其中 $n$ 是链表的长度，需要遍历链表一次
-- 空间复杂度： $O(1)$ 
+- 时间复杂度：$O(n)$  ，其中 $n$ 是链表的长度，需要遍历链表一次
+- 空间复杂度：$O(1)$ 
 
 ```java
 class Solution {
