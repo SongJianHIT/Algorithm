@@ -3,7 +3,9 @@
  * @package sort
  * @className sort.SelectionSort
  */
-package algorithms.sort;
+package algorithms.sort.selection_sort;
+
+import algorithms.sort.SortUtils;
 
 /**
  * SelectionSort

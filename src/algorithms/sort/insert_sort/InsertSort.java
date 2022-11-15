@@ -3,7 +3,9 @@
  * @package sort
  * @className sort.InsertSort
  */
-package algorithms.sort;
+package algorithms.sort.insert_sort;
+
+import algorithms.sort.SortUtils;
 
 /**
  * InsertSort
