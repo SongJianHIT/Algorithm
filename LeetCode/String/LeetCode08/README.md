@@ -89,11 +89,11 @@
 
 ```java
 if (res > Integer.MAX_VALUE / 10 || (res == Integer.MAX_VALUE / 10 && (cur - '0') > Integer.MAX_VALUE % 10)) {
-                return Integer.MAX_VALUE;
-            }
-            if (res < Integer.MIN_VALUE / 10 || (res == Integer.MIN_VALUE / 10 && (cur - '0') > -(Integer.MIN_VALUE % 10))) {
-                return Integer.MIN_VALUE;
-            }
+  return Integer.MAX_VALUE;
+}
+if (res < Integer.MIN_VALUE / 10 || (res == Integer.MIN_VALUE / 10 && (cur - '0') > -(Integer.MIN_VALUE % 10))) {
+  return Integer.MIN_VALUE;
+}
 ```
 
 其他感觉都不是重点了，代码可见 `LeetCode08` 。
