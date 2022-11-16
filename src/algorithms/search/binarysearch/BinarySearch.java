@@ -3,7 +3,7 @@
  * @package search
  * @className search.BinarySearch
  */
-package algorithms.search;
+package algorithms.search.binarysearch;
 
 import org.junit.jupiter.api.Test;
 
