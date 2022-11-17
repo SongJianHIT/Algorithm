@@ -44,7 +44,7 @@
 ![9A71D1471A31A997BC3CE7DB5DFC81E3](https://tva1.sinaimg.cn/large/008vxvgGgy1h87xqafr8nj30rp102gpt.jpg)
 
 ```java
-		public void rotate1(int[] nums, int k) {
+    public void rotate1(int[] nums, int k) {
         if (k <= 0 || nums == null || nums.length < 2) return;
         // 若k大于数组长度，要进行求余！
         k %= nums.length;
@@ -74,7 +74,7 @@
 ![image-20221117104802135](https://tva1.sinaimg.cn/large/008vxvgGgy1h87xkwme4aj30bq09rmxe.jpg)
 
 ```java
-		public void rotate(int[] nums, int k) {
+    public void rotate(int[] nums, int k) {
         if (k <= 0 || nums == null || nums.length < 2) return;
         // 若k大于数组长度，要进行求余！
         k %= nums.length;
