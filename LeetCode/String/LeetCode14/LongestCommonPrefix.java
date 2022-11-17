@@ -5,6 +5,8 @@
  */
 package String.LeetCode14;
 
+import java.util.Arrays;
+
 /**
  * LongestCommonPrefix
  * @description 最长公共前缀
