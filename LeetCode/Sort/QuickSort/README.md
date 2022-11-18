@@ -45,23 +45,22 @@
 
 ```java
 class Solution {
-
     public void moveZeroes(int[] nums) {
-		if(nums==null) {
-			return;
-		}
-		//两个指针i和j
-		int p2 = -1;
-		for(int p1 = 0; p1 < nums.length; p1++) {
-			//当前元素!=0，就把其交换到左边，等于0的交换到右边
-			if(nums[p1]!=0) {
-				int tmp = nums[p1];
+        if(nums==null) {
+            return;
+        }
+        // p2 维护了非0边界
+        int p2 = -1;
+        for(int p1 = 0; p1 < nums.length; p1++) {
+            //当前元素!=0，就与边界尾部的下一个元素进行交换，并且扩大边界
+            if(nums[p1]!=0) {
+                int tmp = nums[p1];
                 nums[p1] = nums[p2+1];
                 nums[p2+1] = tmp;
                 p2++;
-			}
-		}
-	}
+            }
+        }
+    }
 }
 ```
 
