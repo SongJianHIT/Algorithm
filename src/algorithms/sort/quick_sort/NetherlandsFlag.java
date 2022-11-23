@@ -23,7 +23,7 @@ public class NetherlandsFlag {
      * @param R
      * @return 返回等于区域的下标是从哪到哪的
      */
-    public static int[] NetherlandsFlag(int[] arr, int L, int R) {
+    public static int[] netherlandsFlag(int[] arr, int L, int R) {
         if (L < R) {
             return new int[] {-1, -1};
         }
