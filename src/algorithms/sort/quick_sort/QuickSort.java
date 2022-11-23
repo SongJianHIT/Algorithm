@@ -7,6 +7,8 @@ package algorithms.sort.quick_sort;
 
 import algorithms.sort.SortUtils;
 
+import java.util.Stack;
+
 /**
  * QuickSort
  * @description 快速排序三个版本
@@ -73,7 +75,7 @@ public class QuickSort {
      */
 
     public static void quickSort2(int arr[]) {
-        if (arr == null || arr.length == 0) {
+        if (arr == null || arr.length < 0) {
             return;
         }
         process2(arr, 0, arr.length - 1);
@@ -88,7 +90,7 @@ public class QuickSort {
     }
 
     public static int[] netherlandsFlag(int[] arr, int L, int R) {
-        if (L < R) {
+        if (L > R) {
             return new int[] {-1, -1};
         }
         if (L == R) {
@@ -99,14 +101,12 @@ public class QuickSort {
         int more = R;
         int index = L;
         while (index < more) {
-            if (arr[index] < arr[R]) {
-                SortUtils.swap(arr, ++less, index);
+            if (arr[index] == arr[R]) {
                 index++;
-            } else if (arr[index] == arr[R]) {
-                index++;
-            } else if (arr[index] > arr[R]) {
-                // 注意！！这里只扩大于区间，不对index++
-                SortUtils.swap(arr, --more, index);
+            } else if (arr[index] < arr[R]) {
+                SortUtils.swap(arr, index++, ++less);
+            } else { // >
+                SortUtils.swap(arr, index, --more);
             }
         }
         SortUtils.swap(arr, more, R);
@@ -114,8 +114,16 @@ public class QuickSort {
         return new int[] {less + 1, more};
     }
 
-    // =====================================================================
+    // ==================================================================================
 
+    /**
+     * @title quickSort3
+     * @author SongJian
+     * @param: arr
+     * @updateTime 2022/11/23 12:30
+     * @throws
+     * @description     快排 3.0 ：随机快排
+     */
 
     public static void quickSort3(int arr[]) {
         if (arr == null || arr.length == 0) {
@@ -137,6 +145,123 @@ public class QuickSort {
         process2(arr, equalArea[1] + 1, R);
     }
 
+    // =======================================================================================
 
+    // 快排非递归版本需要的辅助类
+    // 要处理的是什么范围上的排序
+    public static class Op {
+        public int l;
+        public int r;
+
+        public Op(int left, int right) {
+            l = left;
+            r = right;
+        }
+    }
+
+    // 快排3.0 非递归版本 用栈来执行
+    public static void quickSort_stack(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        int N = arr.length;
+        SortUtils.swap(arr, (int) (Math.random() * N), N - 1);
+        int[] equalArea = netherlandsFlag(arr, 0, N - 1);
+        int el = equalArea[0];
+        int er = equalArea[1];
+        Stack<Op> stack = new Stack<>();
+        stack.push(new Op(0, el - 1));
+        stack.push(new Op(er + 1, N - 1));
+        while (!stack.isEmpty()) {
+            Op op = stack.pop(); // op.l ... op.r
+            if (op.l < op.r) {
+                SortUtils.swap(arr, op.l + (int) (Math.random() * (op.r - op.l + 1)), op.r);
+                equalArea = netherlandsFlag(arr, op.l, op.r);
+                el = equalArea[0];
+                er = equalArea[1];
+                stack.push(new Op(op.l, el - 1));
+                stack.push(new Op(er + 1, op.r));
+            }
+        }
+    }
+
+
+
+
+
+    // =======================================================================================
+
+    // for test
+    public static int[] generateRandomArray(int maxSize, int maxValue) {
+        int[] arr = new int[(int) ((maxSize + 1) * Math.random())];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = (int) ((maxValue + 1) * Math.random()) - (int) (maxValue * Math.random());
+        }
+        return arr;
+    }
+
+    // for test
+    public static int[] copyArray(int[] arr) {
+        if (arr == null) {
+            return null;
+        }
+        int[] res = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            res[i] = arr[i];
+        }
+        return res;
+    }
+
+    // for test
+    public static boolean isEqual(int[] arr1, int[] arr2) {
+        if ((arr1 == null && arr2 != null) || (arr1 != null && arr2 == null)) {
+            return false;
+        }
+        if (arr1 == null && arr2 == null) {
+            return true;
+        }
+        if (arr1.length != arr2.length) {
+            return false;
+        }
+        for (int i = 0; i < arr1.length; i++) {
+            if (arr1[i] != arr2[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // for test
+    public static void printArray(int[] arr) {
+        if (arr == null) {
+            return;
+        }
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+
+    // for test
+    public static void main(String[] args) {
+        int testTime = 500000;
+        int maxSize = 100;
+        int maxValue = 100;
+        boolean succeed = true;
+        for (int i = 0; i < testTime; i++) {
+            int[] arr1 = generateRandomArray(maxSize, maxValue);
+            int[] arr2 = copyArray(arr1);
+            int[] arr3 = copyArray(arr1);
+            quickSort1(arr1);
+            quickSort2(arr2);
+            quickSort3(arr3);
+            if (!isEqual(arr1, arr2) || !isEqual(arr2, arr3)) {
+                succeed = false;
+                break;
+            }
+        }
+        System.out.println(succeed ? "Nice!" : "Oops!");
+
+    }
 }
  
