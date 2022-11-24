@@ -9,31 +9,31 @@ import algorithms.sort.SortUtils;
 
 /**
  * SelectionSort
- * @description 选择排序
+ *
  * @author SongJian
+ * @description 选择排序
  * @date 2022/11/13 10:58
- * @version
  */
 public class SelectionSort {
 
     /**
+     * @throws
      * @title selectionSort
      * @author SongJian
      * @param: arr
      * @updateTime 2022/11/13 11:11
-     * @throws
      * @description 选择排序，时间复杂度：O(n^2)
      */
-    public static void selectionSort(int[] arr){
-        if(arr == null || arr.length < 2){
+    public static void selectionSort(int[] arr) {
+        if (arr == null || arr.length < 2) {
             return;
         }
         // 0 ～ N-1 找到最小值在哪，放到 0 位置
         // 1 ～ N-1 找到最小值在哪，放到 1 位置
         // ....
-        for(int i = 0; i < arr.length - 1; i++){
+        for (int i = 0; i < arr.length - 1; i++) {
             int minIndex = i;
-            for(int j = i + 1; j < arr.length; j++){
+            for (int j = i + 1; j < arr.length; j++) {
                 minIndex = arr[j] < arr[minIndex] ? j : minIndex;
             }
             // 交换
@@ -51,7 +51,7 @@ public class SelectionSort {
             int[] arr2 = SortUtils.copyArray(arr1);
             selectionSort(arr1);
             SortUtils.comparator(arr2);
-            if(!SortUtils.isEqual(arr1, arr2)){
+            if (!SortUtils.isEqual(arr1, arr2)) {
                 success = false;
                 break;
             }
