@@ -54,3 +54,7 @@
 - `head.next = null` 是保证最后一个元素（就是旧的 `head` 的 `next` 指向 `null` ）
 
 ![IMG_1BF7F4B5DB38-1](https://tva1.sinaimg.cn/large/008vxvgGgy1h8h2mfx0wgj30vp0u0dkr.jpg)
+
+### 方法三：迭代
+
+因为要反转链表，所以需要额外的指针指向前一个元素。
