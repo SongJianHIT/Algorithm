@@ -27,7 +27,7 @@ public class Heap {
      * @updateTime 2022/11/24 11:31
      * @description 向堆中插入元素 arr[index]
      */
-    private void heapInsert(int[] arr, int index) {
+    public void heapInsert(int[] arr, int index) {
         // arr[index] 不比 arr[index父] 大了，停止
         while (arr[index] > arr[(index - 1) / 2]) {
             SortUtils.swap(arr, index, ((index - 1) / 2));
@@ -45,7 +45,7 @@ public class Heap {
      * @updateTime 2022/11/24 11:51
      * @description 从 index 的位置，往下看，不断地下沉
      */
-    private void heapify(int arr[], int index, int heapSize) {
+    public void heapify(int arr[], int index, int heapSize) {
         // 左孩子
         int left = index * 2 + 1;
         // 停：较大的孩子都不再比我大，或者已经没有孩子了
