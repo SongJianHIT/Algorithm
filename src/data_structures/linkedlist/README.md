@@ -226,15 +226,68 @@ class Solution {
 
 > 类似题目：https://leetcode.cn/problems/partition-list-lcci/
 
+### 2.6 复杂链表的复制
 
+请实现 `copyRandomList` 函数，复制一个复杂链表。在复杂链表中，每个节点除了有一个 `next` 指针指向下一个节点，还有一个 `random` 指针指向链表中的任意节点或者 `null`。
 
+**示例 1：**
 
+![img](https://tva1.sinaimg.cn/large/008vxvgGgy1h8o4iuccujj31gs0aq400.jpg)
 
+```
+输入：head = [[7,null],[13,0],[11,4],[10,2],[1,0]]
+输出：[[7,null],[13,0],[11,4],[10,2],[1,0]]
+```
 
+**示例 2：**
 
+![img](https://tva1.sinaimg.cn/large/008vxvgGgy1h8o4iq0l9aj31ae07kt95.jpg)
 
+```
+输入：head = [[1,1],[2,1]]
+输出：[[1,1],[2,1]]
+```
 
+**示例 3：**
 
+**![img](https://tva1.sinaimg.cn/large/008vxvgGgy1h8o4isen67j31gi096my0.jpg)**
+
+```
+输入：head = [[3,null],[3,0],[3,null]]
+输出：[[3,null],[3,0],[3,null]]
+```
+
+**示例 4：**
+
+```
+输入：head = []
+输出：[]
+解释：给定的链表为空（空指针），因此返回 null。
+```
+
+**提示：**
+
+- `-10000 <= Node.val <= 10000`
+- `Node.random` 为空（null）或指向链表中的节点。
+- 节点数目不超过 1000 。
+
+#### 使用容器方法
+
+使用 `HashMap` ，key 是老节点，value 是新节点。
+
+第一次遍历，将老节点和新节点放入表 `HashMap`
+
+第二次遍历，设置其 `random` 和 `next` 指针。
+
+#### 不使用容器方法
+
+具体步骤：
+
+- 遍历链表，在遍历过程中创建复制节点，插入老链表
+- 遍历链表，一次遍历两个节点（新和老节点），设置 `random` 指针
+- 遍历链表，新、老链表分离
+
+![IMG_AD54EAA4E363-1](https://tva1.sinaimg.cn/large/008vxvgGgy1h8o5fnwiqzj30xt0u042x.jpg)
 
 
 
