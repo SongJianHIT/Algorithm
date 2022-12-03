@@ -355,17 +355,22 @@ public static Node buildByLevelQueue(Queue<String> levelList) {
 
 ![IMG_9C8C941BFBFD-1](https://tva1.sinaimg.cn/large/008vxvgGgy1h8qnghptgdj31iu0phq6r.jpg)
 
+### 找到二叉树中最宽的一层
 
+二叉树的宽度是指各层结点数的最大值。
 
+下图中第一层结点数为 1，第二层为 2，第三层为 3，第四层为 2，所以二叉树的宽度为 3。
 
+![image-20221203160224937](https://tva1.sinaimg.cn/large/008vxvgGgy1h8qokwv3rjj30kq06s3yg.jpg)
 
+#### 层序遍历+标记
 
+在层序遍历的基础上，增加几个变量：
 
-
-
-
-
-
+-  `curEnd` 当前层结束节点
+-  `nextEnd` 下一层结束节点
+-  `curCount` 当前层节点计数
+-  `max` 最宽层的节点数量 
 
 
 
