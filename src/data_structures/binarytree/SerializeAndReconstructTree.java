@@ -109,5 +109,98 @@ public class SerializeAndReconstructTree {
         head.right = preb(preList);
         return head;
     }
+
+    /**
+     * @title levelSerial
+     * @author SongJian
+     * @param: head
+     * @updateTime 2022/12/3 14:39
+     * @return: java.util.Queue<java.lang.String>
+     * @throws
+     * @description 层序方式序列化
+     */
+    public static Queue<String> levelSerial(Node head) {
+        Queue<String> ans = new LinkedList<>();
+        if (head == null) {
+            // 空树
+            ans.add(null);
+        } else {
+            // 用来层序遍历的队列
+            // 每个元素进入 queue 时，就进行序列化
+            Queue<Node> queue = new LinkedList<>();
+            queue.add(head);
+            ans.add(String.valueOf(head.value));
+            while (!queue.isEmpty()) {
+                head = queue.poll();
+                if (head.left != null) {
+                    ans.add(String.valueOf(head.left.value));
+                    queue.add(head.left);
+                } else {
+                    // 保持序列化，别遗漏了！
+                    ans.add(null);
+                }
+                if (head.right != null) {
+                    ans.add(String.valueOf(head.right.value));
+                    queue.add(head.right);
+                } else {
+                    ans.add(null);
+                }
+            }
+        }
+        return ans;
+    }
+
+
+    /**
+     * @title buildByLevelQueue
+     * @author SongJian
+     * @param: levelList
+     * @updateTime 2022/12/3 14:50
+     * @return: data_structures.binarytree.SerializeAndReconstructTree.Node
+     * @throws
+     * @description 层序方式反序列化，返回树头节点
+     */
+    public static Node buildByLevelQueue(Queue<String> levelList) {
+        if (levelList == null || levelList.size() == 0) {
+            return null;
+        }
+        // 使用队首元素构建头
+        Node head = generateNode(levelList.poll());
+        // 层序遍历辅助队列
+        Queue<Node> queue = new LinkedList<>();
+        if (head != null) {
+            queue.add(head);
+        }
+        Node node = null;
+        while (!queue.isEmpty()) {
+            node = queue.poll();
+            // 反序列化
+            node.left = generateNode(levelList.poll());
+            node.right = generateNode(levelList.poll());
+            if (node.left != null) {
+                queue.add(node.left);
+            }
+            if (node.right != null) {
+                queue.add(node.right);
+            }
+        }
+        return head;
+    }
+
+    /**
+     * @title generateNode
+     * @author SongJian
+     * @param: val
+     * @updateTime 2022/12/3 14:52
+     * @return: data_structures.binarytree.SerializeAndReconstructTree.Node
+     * @throws
+     * @description 根据字符串生成二叉树节点
+     */
+    public static Node generateNode(String val) {
+        if (val == null) {
+            return null;
+        }
+        return new Node(Integer.valueOf(val));
+    }
 }
  

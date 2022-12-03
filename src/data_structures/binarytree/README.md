@@ -212,4 +212,174 @@ public static void in(Node cur) {
 反序列化：将一个字符串转化成一棵树
 
 > 树和字符串是一个一一对应的关系！
+>
+> 注意：**无法通过中序遍历进行序列化！**
+
+#### 先序序列化
+
+```java
+public static Queue<String> preSerial(Node head) {
+  // 使用队列，是允许放空的
+  Queue<String> ans = new LinkedList<>();
+  // 在先序的过程中，将序列化结果添加入队列
+  pres(head, ans);
+  return ans;
+}
+
+public static void pres(Node head, Queue<String> ans) {
+  if (head == null) {
+    ans.add(null);
+  } else {
+    // head
+    ans.add(String.valueOf(head.value));
+    // left
+    pres(head.left, ans);
+    // right
+    pres(head.right, ans);
+  }
+}
+```
+
+#### 先序反序列化
+
+```java
+public static Node buildByPreQueue(Queue<String> preList) {
+  if (preList == null || preList.size() == 0) {
+    return null;
+  }
+  return preb(preList);
+}
+
+
+public static Node preb(Queue<String> preList) {
+  String value = preList.poll();
+  if (value == null) {
+    return null;
+  }
+  // 建立节点 head
+  Node head = new Node(Integer.valueOf(value));
+  // left
+  head.left = preb(preList);
+  // right
+  head.right = preb(preList);
+  return head;
+}
+```
+
+#### 中序序列化
+
+```java
+public static Queue<String> levelSerial(Node head) {
+  Queue<String> ans = new LinkedList<>();
+  if (head == null) {
+    // 空树
+    ans.add(null);
+  } else {
+    // 用来层序遍历的队列
+    // 每个元素进入 queue 时，就进行序列化
+    Queue<Node> queue = new LinkedList<>();
+    queue.add(head);
+    ans.add(String.valueOf(head.value));
+    while (!queue.isEmpty()) {
+      head = queue.poll();
+      if (head.left != null) {
+        ans.add(String.valueOf(head.left.value));
+        queue.add(head.left);
+      } else {
+        // 保持序列化，别遗漏了！
+        ans.add(null);
+      }
+      if (head.right != null) {
+        ans.add(String.valueOf(head.right.value));
+        queue.add(head.right);
+      } else {
+        ans.add(null);
+      }
+    }
+  }
+  return ans;
+}
+```
+
+#### 中序反序列化
+
+```java
+public static Node buildByLevelQueue(Queue<String> levelList) {
+  if (levelList == null || levelList.size() == 0) {
+    return null;
+  }
+  // 使用队首元素构建头
+  Node head = generateNode(levelList.poll());
+  // 层序遍历辅助队列
+  Queue<Node> queue = new LinkedList<>();
+  if (head != null) {
+    queue.add(head);
+  }
+  Node node = null;
+  while (!queue.isEmpty()) {
+    node = queue.poll();
+    // 反序列化
+    node.left = generateNode(levelList.poll());
+    node.right = generateNode(levelList.poll());
+    if (node.left != null) {
+      queue.add(node.left);
+    }
+    if (node.right != null) {
+      queue.add(node.right);
+    }
+  }
+  return head;
+}
+```
+
+### 多叉树 为二叉树
+
+> LeetCode：https://leetcode.cn/problems/encode-n-ary-tree-to-binary-tree/
+
+设计一个算法，可以将 N 叉树编码为二叉树，并能将该二叉树解码为原 N 叉树。一个 N 叉树是指每个节点都有不超过 N 个孩子节点的有根树。类似地，一个二叉树是指每个节点都有不超过 2 个孩子节点的有根树。你的编码 / 解码的算法的实现没有限制，你只需要保证一个 N 叉树可以编码为二叉树且该二叉树可以解码回原始 N 叉树即可。
+
+例如，你可以将下面的 `3-叉` 树以该种方式编码：
+
+![img](https://img-blog.csdnimg.cn/img_convert/8c9e91a42dcb9286b5ae5765f3d90c3b.png)
+
+注意，上面的方法仅仅是一个例子，可能可行也可能不可行。你没有必要遵循这种形式转化，你可以自己创造和实现不同的方法。
+
+**注意：** 
+
+1. `N` 的范围在 `[1, 1000]`
+2. 不要使用类成员 / 全局变量 / 静态变量来存储状态。你的编码和解码算法应是无状态的。
+
+#### 方法
+
+关键点：**对于树中任意一个节点，它的所有的孩子都在其左树右边界上** 。
+
+![IMG_9C8C941BFBFD-1](https://tva1.sinaimg.cn/large/008vxvgGgy1h8qnghptgdj31iu0phq6r.jpg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
