@@ -372,7 +372,36 @@ public static Node buildByLevelQueue(Queue<String> levelList) {
 -  `curCount` 当前层节点计数
 -  `max` 最宽层的节点数量 
 
+### 后继节点
 
+二叉树结构如下定义：
+
+```java
+public static class Node {
+		public int value;
+		public Node left;
+		public Node right;
+		public Node parent;
+
+		public Node(int data) {
+			this.value = data;
+		}
+}
+```
+
+给定二叉树的某个节点，返回该节点在中序遍历下的后继节点。
+
+**具体步骤：**
+
+- 如果节点 `x` 存在右孩子 `x->right` ，则 `x` 的后继节点一定是 **右树中的最左节点** 。
+
+- 如果节点 `x` 不存在右孩子 `x->right` ：
+
+  - 如果节点 `x` 是它父亲 `x->parent` 的右孩子 `x->parent>right` ，则往上找。直到某个节点是它父亲的左孩子。
+  - 此时，`x` 的后继节点就是该节点的父亲，即 `x->parent->left = x` 的 `parent` 。
+  - 如果找不到该父节点，则该节点 `x` 无后继。
+
+  > 原因：因为此时 `x` 是返回的 `parent` 的左子树的最右节点，访问完 `x` 后就访问 `parent` 了。
 
 
 
