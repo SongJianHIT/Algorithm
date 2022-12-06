@@ -5,11 +5,8 @@
  */
 package data_structures.binarytree;
 
-<<<<<<< HEAD
 import java.util.ArrayList;
 
-=======
->>>>>>> 1f2a03f (判断满二叉树)
 /**
  * MaxSubBST
  * @description 最大二叉搜索子树
@@ -93,7 +90,6 @@ public class MaxSubBST {
         int maxBSTSize = Math.max(p1, Math.max(p2, p3));
         return new Info(max, min, allSize, maxBSTSize);
     }
-<<<<<<< HEAD
 
     // 为了验证
     // 对数器方法
@@ -169,7 +165,5 @@ public class MaxSubBST {
         System.out.println("测试结束");
     }
 
-=======
->>>>>>> 1f2a03f (判断满二叉树)
 }
  
