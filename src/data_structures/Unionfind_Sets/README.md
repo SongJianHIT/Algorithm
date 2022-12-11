@@ -57,35 +57,44 @@
 
 ## 经典题目
 
-### 朋友圈
+### 省份数量
 
-一个班有N个学生。有些是朋友，有些不是。他们的友谊在本质上是可传递的。例如，如果A是B的直接朋友，B是C的直接朋友，那么A是C的间接朋友。定义朋友圈是一群学生的直接朋友或间接朋友。
+> https://leetcode.cn/problems/number-of-provinces/
 
-给出一个 `N*N` 矩阵M，表示班级中同学之间的朋友关系。如果 `M[i][j] = 1`，则第i个和第j个学生之间是直接的朋友，否则不是。你需要输出所有学生的朋友圈总数。
+有 `n` 个城市，其中一些彼此相连，另一些没有相连。如果城市 `a` 与城市 `b` 直接相连，且城市 `b` 与城市 `c` 直接相连，那么城市 `a` 与城市 `c` 间接相连。
 
-Example 1:
-Input:
+**省份** 是一组直接或间接相连的城市，组内不含其他没有相连的城市。
 
-```java
-[[1,1,0],
- [1,1,0],
- [0,0,1]]
+给你一个 `n x n` 的矩阵 `isConnected` ，其中 `isConnected[i][j] = 1` 表示第 `i` 个城市和第 `j` 个城市直接相连，而 `isConnected[i][j] = 0` 表示二者不直接相连。
+
+返回矩阵中 **省份** 的数量。
+
+**示例 1：**
+
+![img](https://assets.leetcode.com/uploads/2020/12/24/graph1.jpg)
+
+```
+输入：isConnected = [[1,1,0],[1,1,0],[0,0,1]]
+输出：2
 ```
 
-Output: 2
-Explanation: 0和1是直接的朋友，所以他们在一个朋友圈里。第二个学生自己在一个朋友圈里。返回2。
+**示例 2：**
 
-Example 2:
-Input:
+![img](https://assets.leetcode.com/uploads/2020/12/24/graph2.jpg)
 
-```java
-[[1,1,0],
- [1,1,1],
- [0,1,1]]
+```
+输入：isConnected = [[1,0,0],[0,1,0],[0,0,1]]
+输出：3
 ```
 
-Output: 1
-Explanation: 第0位和第1位是直接朋友，第1位和第2位是直接朋友，所以0和2是间接的朋友。它们都在同一个朋友圈，所以返回1。
+**提示：**
+
+- `1 <= n <= 200`
+- `n == isConnected.length`
+- `n == isConnected[i].length`
+- `isConnected[i][j]` 为 `1` 或 `0`
+- `isConnected[i][i] == 1`
+- `isConnected[i][j] == isConnected[j][i]`
 
 #### 方法：并查集
 
