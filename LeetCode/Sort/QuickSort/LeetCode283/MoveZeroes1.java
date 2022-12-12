@@ -3,7 +3,7 @@
  * @package Sort.QuickSort
  * @className Sort.QuickSort.LeetCode283
  */
-package Sort.QuickSort;
+package Sort.QuickSort.LeetCode283;
 
 /**
  * LeetCode283: https://leetcode.cn/problems/move-zeroes/description/
