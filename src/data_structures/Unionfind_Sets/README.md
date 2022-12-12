@@ -102,7 +102,7 @@
 
 最后返回代表节点的个数（也就是集合的个数）。
 
-## 岛问题
+### 岛问题
 
 Given an `m x n` 2D binary grid `grid` which represents a map of `'1'`s (land) and `'0'`s (water), return *the number of islands*.
 
@@ -139,7 +139,7 @@ Output: 3
 - `1 <= m, n <= 300`
 - `grid[i][j]` is `'0'` or `'1'`.
 
-### 方法一：递归
+#### 方法一：递归
 
 遍历整个 `matrix` 矩阵，每次遇到了 `1` 就执行一次感染过程，将与这个 `1` 连成岛屿的 `1` 全部改为 `2`。
 
@@ -147,7 +147,7 @@ Output: 3
 
 ![image-20221212102703975](https://tva1.sinaimg.cn/large/008vxvgGgy1h90tgre5xkj30od0350ss.jpg)
 
-### 方法二：并查集
+#### 方法二：并查集
 
 先把所有的 `1` 看成独立的集合，然后查其上面和左边的数字是否是 `1` ，是 `1` 则合并。最后返回集合个数即可。
 
@@ -164,7 +164,68 @@ Output: 3
 
 ![image-20221212110638840](https://tva1.sinaimg.cn/large/008vxvgGgy1h90ulxzw3bj30p3047wel.jpg)
 
+### 岛问题2
 
+A 2d [grid](https://so.csdn.net/so/search?q=grid&spm=1001.2101.3001.7020) map of m rows and n columns is initially filled with water. We may perform an addLand operation which turns the water at position (row, col) into a land. Given a list of positions to operate, count the number of islands after each addLand operation. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+
+Example:
+
+```
+Input: m = 3, n = 3, positions = [[0,0], [0,1], [1,2], [2,1]]
+Output: [1,1,2,3]
+```
+
+Explanation:
+
+Initially, the 2d grid grid is filled with water. (Assume 0 represents water and 1 represents land).
+
+```
+0 0 0
+0 0 0
+0 0 0
+```
+
+Operation #1: addLand(0, 0) turns the water at grid[0][0] into a land.
+
+```
+1 0 0
+0 0 0   Number of islands = 1
+0 0 0
+```
+
+Operation #2: addLand(0, 1) turns the water at grid[0][1] into a land.
+
+```
+1 1 0
+0 0 0   Number of islands = 1
+0 0 0
+```
+
+Operation #3: addLand(1, 2) turns the water at grid[1][2] into a land.
+
+```
+1 1 0
+0 0 1   Number of islands = 2
+0 0 0
+```
+
+Operation #4: addLand(2, 1) turns the water at grid[2][1] into a land.
+
+```
+1 1 0
+0 0 1   Number of islands = 3
+0 1 0
+```
+
+**Follow up:**
+
+Can you do it in time complexity O(k log mn), where k is the length of the positions?
+
+> 也就是一开始给一个 `m * n` 大小的空矩阵，然后逐步添加 `positions` 中的岛屿 `1`，要求每一步的岛数量。
+
+#### 解法：并查集
+
+相当于上一题的动态改法，于是不能使用递归进行感染。
 
 
 
