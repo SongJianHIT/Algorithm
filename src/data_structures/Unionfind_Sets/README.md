@@ -102,17 +102,67 @@
 
 最后返回代表节点的个数（也就是集合的个数）。
 
+## 岛问题
 
+Given an `m x n` 2D binary grid `grid` which represents a map of `'1'`s (land) and `'0'`s (water), return *the number of islands*.
 
+An **island** is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
 
+**Example 1:**
 
+```
+Input: grid = [
+  ["1","1","1","1","0"],
+  ["1","1","0","1","0"],
+  ["1","1","0","0","0"],
+  ["0","0","0","0","0"]
+]
+Output: 1
+```
 
+**Example 2:**
 
+```
+Input: grid = [
+  ["1","1","0","0","0"],
+  ["1","1","0","0","0"],
+  ["0","0","1","0","0"],
+  ["0","0","0","1","1"]
+]
+Output: 3
+```
 
+**Constraints:**
 
+- `m == grid.length`
+- `n == grid[i].length`
+- `1 <= m, n <= 300`
+- `grid[i][j]` is `'0'` or `'1'`.
 
+### 方法一：递归
 
+遍历整个 `matrix` 矩阵，每次遇到了 `1` 就执行一次感染过程，将与这个 `1` 连成岛屿的 `1` 全部改为 `2`。
 
+本方法的时间复杂度为 $O(MN)$ 。
+
+![image-20221212102703975](https://tva1.sinaimg.cn/large/008vxvgGgy1h90tgre5xkj30od0350ss.jpg)
+
+### 方法二：并查集
+
+先把所有的 `1` 看成独立的集合，然后查其上面和左边的数字是否是 `1` ，是 `1` 则合并。最后返回集合个数即可。
+
+要使用数组实现并查集，怎么做对应的？
+
+> 将矩阵对应成向量，公式：`i * 列数 + j`
+>
+> ```java
+> // 矩阵对应到向量
+> private int index(int r, int c) {
+>   return r * col + c;
+> }
+> ```
+
+![image-20221212110638840](https://tva1.sinaimg.cn/large/008vxvgGgy1h90ulxzw3bj30p3047wel.jpg)
 
 
 
