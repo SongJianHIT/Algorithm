@@ -75,6 +75,5 @@ public class Prim {
         }
         return res;
     }
-
 }
  
