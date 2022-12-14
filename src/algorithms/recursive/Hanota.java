@@ -32,7 +32,8 @@ public class Hanota {
 
     // 请把1~N层圆盘 从左 -> 右
     public static void leftToRight(int n) {
-        if (n == 1) { // base case
+        if (n == 1) {
+            // base case
             System.out.println("Move 1 from left to right");
             return;
         }
@@ -105,7 +106,8 @@ public class Hanota {
     }
 
     public static void func(int N, String from, String to, String other) {
-        if (N == 1) { // base
+        if (N == 1) {
+            // base case
             System.out.println("Move 1 from " + from + " to " + to);
         } else {
             func(N - 1, from, other, to);
