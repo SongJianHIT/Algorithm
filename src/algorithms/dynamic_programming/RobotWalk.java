@@ -24,6 +24,9 @@ public class RobotWalk {
      * @return
      */
     private static int ways1 (int N, int start, int aim, int K) {
+        if (N < 2 || start < 1 || start > N || aim < 1 || aim > N || K < 1) {
+            return -1;
+        }
         return process1(start, K, aim, N);
     }
 
@@ -66,6 +69,9 @@ public class RobotWalk {
      * @description
      */
     private static int ways2 (int N, int start, int aim, int K) {
+        if (N < 2 || start < 1 || start > N || aim < 1 || aim > N || K < 1) {
+            return -1;
+        }
         // 缓存表
         int[][] dp = new int[N+1][K+1];
         // 如果 dp[cur][rest]=-1，则表示 process2(cur, rest) 没算过
@@ -108,6 +114,9 @@ public class RobotWalk {
      * @return
      */
     public static int ways3 (int N, int start, int aim, int K) {
+        if (N < 2 || start < 1 || start > N || aim < 1 || aim > N || K < 1) {
+            return -1;
+        }
         int[][] dp = new int[N+1][K+1];
         dp[aim][0] = 1;
         // 列
