@@ -171,7 +171,6 @@ public class CardsInLine {
         System.out.println(win1(arr));
         System.out.println(win2(arr));
         System.out.println(win3(arr));
-
     }
 }
  
