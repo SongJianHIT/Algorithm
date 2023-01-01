@@ -101,9 +101,9 @@ public class NQueens {
 
     // 7皇后问题
     // limit : 0....0 1 1 1 1 1 1 1
-    // 之前皇后的列影响：colLim
-    // 之前皇后的左下对角线影响：leftDiaLim
-    // 之前皇后的右下对角线影响：rightDiaLim
+    // 之前皇后的列影响、列限制：colLim
+    // 之前皇后的左下对角线影响、左下限制：leftDiaLim
+    // 之前皇后的右下对角线影响、右下限制：rightDiaLim
     public static int process2(int limit, int colLim, int leftDiaLim, int rightDiaLim) {
         if (colLim == limit) {
             return 1;
