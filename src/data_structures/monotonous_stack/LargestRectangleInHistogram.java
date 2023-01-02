@@ -22,7 +22,7 @@ public class LargestRectangleInHistogram {
      * @updateTime 2023/1/2 11:37
      * @return: int
      * @throws
-     * @description
+     * @description 时间复杂度 O(N)
      */
     public int largestRectangleArea(int[] heights) {
         if (heights == null || heights.length == 0) {
